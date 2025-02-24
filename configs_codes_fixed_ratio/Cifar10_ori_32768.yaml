@@ -1,0 +1,31 @@
+device_id: 2
+model_configs:
+  backbone_configs:
+    h_dim: 128
+    in_dim: 3
+    n_res_layers: 2
+    res_h_dim: 32
+  use_vq: true
+  vq_params:
+    beta: 0.25
+    decay: 0.99
+    embedding_dim: 32
+    eps: 1.0e-05
+    kmean_init: true
+    n_embeddings: 32768
+seed: 3072
+train_configs:
+  batch_size: 128
+  criterion: mse
+  dataset: cifar10
+  init_batch: 4
+  init_size: 327680
+  log_dir: /data3/zwh/VQ_Selection_Real_Data/logs_codes_fixed_ratio/Cifar10_ori_32768
+  lr: 0.0003
+  max_epoch: 300
+  num_workers: 4
+  optimizer: Adam
+  pretrain: false
+  pretrain_model_path: None
+  save_dir: /data3/zwh/VQ_Selection_Real_Data/save_codes_fixed_ratio/Cifar10_ori_32768/
+  weight_decay: 0.0001

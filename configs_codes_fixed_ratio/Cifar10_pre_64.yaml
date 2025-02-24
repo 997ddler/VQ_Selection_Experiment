@@ -1,0 +1,42 @@
+model_configs:
+    use_vq: True
+    vq_params:
+        embedding_dim: 32
+        n_embeddings: 64
+        beta: 0.25
+        decay: 0.99
+        eps: 0.00001
+        kmean_init: True
+        
+    backbone_configs:
+        in_dim: 3
+        h_dim: 128
+        n_res_layers: 2
+        res_h_dim: 32
+
+train_configs:
+    pretrain: True
+    pretrain_model_path: /data3/zwh/VQ_Selection_Real_Data/save_codes_fixed_ratio/Cifar10_ae_64/model.pth
+    
+    init_batch: 1
+    init_size: 640
+
+    dataset: cifar10
+
+    optimizer: Adam
+    weight_decay: 0.0001
+    
+    criterion: mse
+    
+    lr: 0.0003
+    
+    batch_size: 128
+    
+    num_workers: 4
+    
+    log_dir: /data3/zwh/VQ_Selection_Real_Data/logs_codes_fixed_ratio/Cifar10_pre_64
+    save_dir: /data3/zwh/VQ_Selection_Real_Data/save_codes_fixed_ratio/Cifar10_pre_64/
+    max_epoch: 150
+
+# see if the init batch works
+

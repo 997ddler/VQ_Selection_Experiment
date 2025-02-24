@@ -1,0 +1,36 @@
+model_configs:
+    use_vq: False
+    vq_params:
+        embedding_dim: 128
+        n_embeddings: 512
+        beta: 0.25
+        decay: 0.99
+        eps: 0.00001
+        kmean_init: True
+        
+    backbone_configs:
+        in_dim: 3
+        h_dim: 128
+        n_res_layers: 2
+        res_h_dim: 32
+
+train_configs:
+    pretrain: False
+    pretrain_model_path: ./model.pth
+    
+    dataset: cifar10
+
+    optimizer: AdamW
+    weight_decay: 0.0001
+    
+    criterion: mse
+    
+    lr: 0.0003
+    
+    batch_size: 128
+    
+    num_workers: 4
+    
+    log_dir: /data3/zwh/VQ_Selection_Real_Data/logs/Cifar10_ae
+    save_dir: /data3/zwh/VQ_Selection_Real_Data/save_dir/Cifar10_ae/
+    max_epoch: 150
