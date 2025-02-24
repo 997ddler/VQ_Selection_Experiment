@@ -37,6 +37,10 @@ class Decoder(nn.Module):
         stride_configs.reverse()
         padding_configs.reverse()
 
+        res_kernel = 3
+        res_stride = 1
+        res_padding = 1
+
 
 
         if cov_configs is not None:

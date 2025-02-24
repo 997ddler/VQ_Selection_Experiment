@@ -25,6 +25,9 @@ class Encoder(nn.Module):
         kernel_configs = [4, 4, 3]
         stride_configs = [2, 2, 1]
         padding_configs = [1, 1, 1]
+        res_kernel = 3
+        res_stride = 1
+        res_padding = 1
         
         if cov_configs is not None:
             kernel_configs = cov_configs['kernel']
@@ -56,7 +59,8 @@ class Encoder(nn.Module):
                     nn.Conv2d(h_dim, h_dim, kernel_size=left_kernel[i],
                           stride=left_stride[i], padding=left_padding[i])
                 )
-                
+        
+        print(f'Residual Stack: {h_dim}, {h_dim}, {res_h_dim}, {n_res_layers}, {res_kernel}, {res_stride}, {res_padding}')
         self.conv_stack.append(
             ResidualStack(
                 h_dim, h_dim, res_h_dim, n_res_layers, res_kernel, res_stride, res_padding), # 7 * 7 for mnist 

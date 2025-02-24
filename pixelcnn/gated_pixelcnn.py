@@ -36,7 +36,7 @@ parser.add_argument("--num_workers", type=int, default=4)
 parser.add_argument("--img_dim", type=int, default=8)
 parser.add_argument("--input_dim", type=int, default=1,
     help='1 for grayscale 3 for rgb')
-parser.add_argument("--n_embeddings", type=int, default=512,
+parser.add_argument("--n_embeddings", type=int, default=16,
     help='number of embeddings from VQ VAE')
 parser.add_argument("--n_layers", type=int, default=15)
 parser.add_argument("--learning_rate", type=float, default=3e-4)

@@ -152,3 +152,15 @@ class VQVAE(nn.Module):
             return self.quantizer.get_ori_decay()
         else:
             return None
+
+    def get_latents(self, x):
+        z_e = self.encoder(x)
+        z_e = self.pre_quantization_conv(z_e)
+
+        if self.use_compressed:
+            z_e = z_e.permute(0, 2, 3, 1)
+            z_e = self.linear_project_lower(z_e)
+            z_e = z_e.permute(0, 3, 1, 2)
+        
+        _, _, _, _, indices = self.quantizer(z_e)
+        return indices
